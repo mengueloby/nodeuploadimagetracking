@@ -1,0 +1,84 @@
+<html>
+    <head>
+        <!-- General Settings -->
+        <meta charset="utf-8">
+        <meta http-equiv="content-language" content="en-us">
+        <base href="{global.baseUrl}" />
+
+        <!-- Meta Tags -->
+        <title>{head.title} | {global.appName}</title>
+        <meta name="description" content="{head.description}">
+
+        <!-- Static Assets -->
+        <link type="image/x-icon" rel="icon" href="webcontent/resources/images/favicon.ico">
+        <link rel="stylesheet" type="text/css" href="webcontent/resources/css/css_src.css" />
+        
+    </head>
+    
+    
+    <body>
+    <div class="toolbar">
+        <img src="webcontent/resources/images/logo.png" />
+        <ul>
+            
+            <li id="menulogout" class="loggedin" onclick="app.actions.logout();"><a id="menulogoutlink">Log out</a></li>
+            <li id="menuwelcome" class="loggedin" onclick="app.actions.getprofile();"><a id="menuwelcomelink">Welcome</a></li>
+            <li id="menuregister" class="loggedout" onclick="document.getElementById('menuregisterlink').click();"><a id="menuregisterlink" href="index#registerform">Register</a></li>
+            <li id="menulogin" class="loggedout" onclick="document.getElementById('menuloginlink').click();"><a id="menuloginlink" href="index#loginform">Log in</a></li>
+            <li id="menucart" class="loggedin" onclick="app.actions.getcart();"><a id="menucartlink">Cart<div id="cartitems">&nbsp;</div></a></li>
+            <li id="menumenus" class="loggedin" onclick="app.actions.getmenus();"><a id="menumenuslink">Menus</a></li>
+            <li onclick="app.actions.gotohome();"><a id="menuhomelink">Home</a></li>
+        </ul>
+        <div class="cleardiv"></div>
+    </div>    
+
+   
+        <div class="loginform" id="loginform">
+            <div>
+                <a class="closepopup" href="index#" onclick="app.actions.clearloginform();"></a>
+                <div class="cleardiv"></div>
+                <input type="text" value="" placeholder="login" id="logininput" onkeypress="if(event.keyCode == 13) {document.getElementById('validatelogin').click();}"/>
+                <input type="password" value="" placeholder="password" id="passwordinput" onkeypress="if(event.keyCode == 13) {document.getElementById('validatelogin').click();}"/>
+
+                <a id="validatelogin" onclick="app.actions.login();" class="actionbotton">Log in</a>
+            </div>    
+        </div>
+        
+        
+        <div class="loginform" id="registerform">
+            <div>
+                <a class="closepopup" href="index#" onclick="app.actions.clearregisterform();"></a>
+                <div class="cleardiv"></div>
+                <input type="text" value="" placeholder="mail" id="mailinput"/>
+                <input type="password" value="" placeholder="password" id="pwdinput"/>
+                <input type="text" value="" placeholder="name" id="nameinput"/>
+                <input type="text" value="" placeholder="street" id="streetinput"/>
+                <input type="text" value="" placeholder="phone, optional" id="phoneinput"/>
+                <input type="text" value="" placeholder="credit card number, optional" id="ccinput"/> 
+                <input type="file" id="ppinput" onchange="handleFiles(this, this.files)" multiple /> <!-- onchange="app.actions.register()" -->
+                <a onclick="app.actions.register();" href="index#" class="actionbotton">Register</a>
+                <div id="iploaddiv">---</div>
+            </div>    
+        </div>
+        
+        <div class="msgreturn" id="msgreturn">
+            <p id="msgprinter"></p>
+        </div>    
+        
+        
+        
+        <div class="loginform" id="addcartform">
+            <div>
+                <a class="closepopup" href="menus#" onclick="app.actions.clearloginform();"></a>
+                <div class="cleardiv"></div>
+                <input type="text" value="" id="addcartformpizza" readonly="readonly"/>
+                <input type="text" value="" id="addcartformpu" readonly="readonly"/>
+                <input type="text" value="1" id="addcartformqty"/>
+                <a onclick="app.actions.addcart();" href="menus#" class="actionbotton">Add</a>
+            </div>    
+        </div>
+        
+        
+        
+        
+        <div class="content contentindex">
